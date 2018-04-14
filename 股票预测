@@ -1,0 +1,30 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        i=0 #记录最低价
+        j=1 #记录最高价
+        f=2 #跟踪价格
+        get=0
+        if len(prices)< 10000:
+            for a in range(len(prices)-1):
+                if prices[a]<prices[a+1]:
+                    get+=prices[a+1]-prices[a]
+                else:
+                    continue
+        else:
+            while f<len(prices):
+                if prices[f-1]<prices[f-2]&prices[f-1]<prices[f]:
+                    j=f
+                else:
+                    if prices[f-1]>prices[f-2]&prices[f-1]>prices[f]:
+                        j=f
+                        get+=prices[j]-prices[i]
+                    else:
+                        continue  
+                    
+              
+            f+=1    
+        return get 
