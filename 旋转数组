@@ -1,0 +1,35 @@
+class Solution(object):
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        s=k%len(nums)
+        if s==0 or s==len(nums):
+            pass
+        else:
+            
+            a=0
+            f=0
+            j=0
+            if len(nums)%s!=0 or s==1:
+                b=nums[j]
+                for i in range(len(nums)):
+                    indx=(f+s)%len(nums)
+                    a=nums[indx]
+                    nums[indx]=b
+                    b=a
+                    f=indx
+            else:
+                nums.append(1)
+                b=nums[j]
+                for i in range(len(nums)):
+                    indx=(f+s+1)%len(nums)
+                    a=nums[indx]
+                    nums[indx]=b
+                    b=a
+                    f=indx
+                    print(nums)
+                nums.remove(nums[s])      
+                
